@@ -38,5 +38,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     dependencies{
         implementation 'com.karumi:dexter:6.2.2'
+        'com.android.support:recyclerview-v7:23.1.0'
     }
 }

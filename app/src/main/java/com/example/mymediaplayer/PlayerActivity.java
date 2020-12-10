@@ -20,13 +20,13 @@ import java.util.ArrayList;
 
 public class PlayerActivity extends AppCompatActivity {
     static MediaPlayer myMediaPlayer;
-    String sname;
-    int position;
-    ArrayList<File> mySongs;
-    Thread updateSeekBar;
-    private Button icon_pause;
-    private Button icon_prev;
-    private Button icon_next;
+    private String sname;
+   private int position;
+   private ArrayList<File> mySongs;
+    private Thread updateSeekBar;
+    private Button btn_pause;
+    private Button btn_prev;
+    private Button btn_next;
     private SeekBar seekBar;
     private TextView textView;
 
@@ -36,11 +36,11 @@ public class PlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
 
-        icon_next = (Button) findViewById(R.id.icon_next);
-        icon_pause = (Button) findViewById(R.id.icon_pause);
-        icon_next = (Button) findViewById(R.id.icon_prev);
+        btn_next = (Button) findViewById(R.id.btn_next);
+        btn_pause = (Button) findViewById(R.id.btn_pause);
+        btn_prev = (Button) findViewById(R.id.btn_prev);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
-        textView = (TextView) findViewById(R.id.textView);
+        textView = (TextView) findViewById(R.id.songsName);
 
         getSupportActionBar().setTitle("Now Playing");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -109,22 +109,22 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
 
-        icon_pause.setOnClickListener(new View.OnClickListener() {
+        btn_pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 seekBar.setMax(myMediaPlayer.getDuration());
 
                 if (myMediaPlayer.isPlaying()) {
-                    icon_pause.setBackgroundResource(R.drawable.icon_play);
+                    btn_pause.setBackgroundResource(R.drawable.icon_play);
                     myMediaPlayer.pause();
                 } else {
-                    icon_pause.setBackgroundResource(R.drawable.icon_pause);
+                    btn_pause.setBackgroundResource(R.drawable.icon_pause);
                     myMediaPlayer.start();
                 }
             }
         });
 
-        icon_next.setOnClickListener(new View.OnClickListener() {
+        btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myMediaPlayer.stop();
