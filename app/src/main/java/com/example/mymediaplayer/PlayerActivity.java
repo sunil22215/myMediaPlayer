@@ -42,11 +42,11 @@ public class PlayerActivity extends AppCompatActivity {
         seekBar = (SeekBar) findViewById(R.id.seekBar);
         textView = (TextView) findViewById(R.id.songsName);
 
-        getSupportActionBar().setTitle("Now Playing");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+       // getSupportActionBar().setTitle("Now Playing");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        updateSeekBar = new Thread() {
+       /* updateSeekBar = new Thread() {
 
             public void run() {
                 int totalDuration = myMediaPlayer.getDuration();
@@ -62,8 +62,8 @@ public class PlayerActivity extends AppCompatActivity {
                     }
                 }
             }
-        };
-        if (myMediaPlayer != null) {
+        };*/
+       if (myMediaPlayer != null) {
             myMediaPlayer.stop();
             myMediaPlayer.release();
         }
@@ -76,18 +76,18 @@ public class PlayerActivity extends AppCompatActivity {
 
         String songName = i.getStringExtra("songname");
 
-        textView.setText(songName);
-        textView.setSelected(true);
+       textView.setText(songName);
+       textView.setSelected(true);
 
         position = bundle.getInt("pos", 0);
         Uri u = Uri.parse(mySongs.get(position).toString());
 
         myMediaPlayer = MediaPlayer.create(getApplicationContext(), u);
         myMediaPlayer.start();
-       seekBar.setMax(myMediaPlayer.getDuration());
-        updateSeekBar.start();
+      // seekBar.setMax(myMediaPlayer.getDuration());
+      //  updateSeekBar.start();
 
-        seekBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.design_default_color_primary), PorterDuff.Mode.MULTIPLY);
+      /* seekBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.design_default_color_primary), PorterDuff.Mode.MULTIPLY);
         seekBar.getThumb().setColorFilter(getResources().getColor(R.color.design_default_color_primary), PorterDuff.Mode.SRC_IN);
 
 
@@ -108,7 +108,7 @@ public class PlayerActivity extends AppCompatActivity {
 
             }
         });
-
+*/
         btn_pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,7 +139,7 @@ public class PlayerActivity extends AppCompatActivity {
                 myMediaPlayer.start();
             }
         });
-      /*  icon_prev.setOnClickListener(new View.OnClickListener() {
+          btn_prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myMediaPlayer.stop();
@@ -155,14 +155,14 @@ public class PlayerActivity extends AppCompatActivity {
                 myMediaPlayer.start();
             }
         });
-*/
-    }
 
-    @Override
+   }
+
+   /* @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }
